@@ -1,0 +1,106 @@
+.movie-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.movie-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.movie-info {
+  font-size: 14px;
+}
+
+.movie-info p {
+  margin: 6px 0;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-info p strong {
+  font-weight: 600;
+  color: #444;
+  margin-right: 5px;
+}
+
+.movie-description {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.movie-description.preview {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.movie-description.expanded {
+  max-height: 150px;
+  overflow-y: auto;
+  color: #666;
+  flex-grow: 1;
+  padding-right: 8px;
+}
+
+/* Scrollbar styling for webkit browsers */
+.movie-description.expanded::-webkit-scrollbar {
+  width: 6px;
+}
+
+.movie-description.expanded::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.movie-description.expanded::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.movie-description.expanded::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.movie-card-footer {
+  margin-top: 15px;
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  color: #3f51b5;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.expand-button:hover {
+  background-color: rgba(63, 81, 181, 0.1);
+} 
