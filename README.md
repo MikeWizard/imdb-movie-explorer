@@ -302,7 +302,7 @@ This returns the second page of movies with "star" in the title, with 5 movies p
    - Click "Send"
    - This will return the second page of movies with "star" in the title, with 5 movies per page
 
-![Postman Example](https://i.imgur.com/example.png)
+
 
 ### Common Parameters
 
