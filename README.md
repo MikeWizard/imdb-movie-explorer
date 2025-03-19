@@ -214,6 +214,131 @@ The backend provides the following API endpoints:
 - `GET /health` - Check API health
   - Returns: `{"status": "ok", "movies_loaded": <number>}`
 
+## API Access Guide
+
+This section provides simple instructions for accessing the API directly using cURL (command line) or Postman (GUI tool).
+
+### Using cURL (Command Line)
+
+cURL is a command-line tool for making HTTP requests. Here are some examples:
+
+#### Check API Health
+
+```bash
+curl http://127.0.0.1:5000/health
+```
+
+This should return something like:
+```json
+{"status":"ok","movies_loaded":1000}
+```
+
+#### Get Movies (First Page)
+
+```bash
+curl http://127.0.0.1:5000/movies
+```
+
+This returns the first page of movies (default 12 per page).
+
+#### Get a Specific Page of Movies
+
+```bash
+curl "http://127.0.0.1:5000/movies?page=2&per_page=5"
+```
+
+This returns the second page with 5 movies per page.
+
+#### Search for Movies by Title
+
+```bash
+curl "http://127.0.0.1:5000/movies?title=star"
+```
+
+This returns movies with "star" in the title.
+
+#### Combine Search and Pagination
+
+```bash
+curl "http://127.0.0.1:5000/movies?title=star&page=2&per_page=5"
+```
+
+This returns the second page of movies with "star" in the title, with 5 movies per page.
+
+### Using Postman (GUI Tool)
+
+[Postman](https://www.postman.com/downloads/) is a popular tool for testing APIs with a graphical interface.
+
+1. **Download and Install Postman**: Visit [postman.com/downloads](https://www.postman.com/downloads/)
+
+2. **Create a New Request**:
+   - Click the "+" button to create a new request
+   - Select "GET" from the dropdown (it's the default)
+
+3. **Check API Health**:
+   - Enter `http://127.0.0.1:5000/health` in the URL field
+   - Click "Send"
+   - You should see the response in the lower panel
+
+4. **Get Movies**:
+   - Enter `http://127.0.0.1:5000/movies` in the URL field
+   - Click "Send"
+   - You'll see a list of movies in the response
+
+5. **Add Query Parameters** (for pagination or search):
+   - Click on "Params" button below the URL field
+   - Add key-value pairs:
+     - For pagination: key=`page`, value=`2` and key=`per_page`, value=`5`
+     - For search: key=`title`, value=`star`
+   - Click "Send"
+
+6. **Combine Search and Pagination**:
+   - Enter `http://127.0.0.1:5000/movies` in the URL field
+   - Click on "Params" button below the URL field
+   - Add these key-value pairs:
+     - key=`title`, value=`star`
+     - key=`page`, value=`2`
+     - key=`per_page`, value=`5`
+   - Click "Send"
+   - This will return the second page of movies with "star" in the title, with 5 movies per page
+
+![Postman Example](https://i.imgur.com/example.png)
+
+### Common Parameters
+
+- `page`: Page number (starts at 1)
+- `per_page`: Number of movies per page (default is 12)
+- `title`: Search term to filter movies by title
+
+### Response Format
+
+The API returns JSON data in this format:
+
+```json
+{
+  "movies": [
+    {
+      "title": "Movie Title",
+      "year": "2020",
+      "director": "Director Name",
+      "genre": "Action",
+      "rating": "7.5",
+      "description": "Movie description...",
+      "duration": "120",
+      "country": "USA",
+      "language": "English"
+    },
+    // More movies...
+  ],
+  "pagination": {
+    "page": 1,
+    "per_page": 12,
+    "total": 1000,
+    "pages": 84
+  }
+}
+```
+
 ## Deployment
 
 ### Frontend
